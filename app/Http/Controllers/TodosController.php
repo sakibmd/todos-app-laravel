@@ -57,4 +57,11 @@ class TodosController extends Controller
 
         return redirect(route('todos.all'));
     }
+
+    public function completed(Todo $todo){
+        $todo->completed = true;
+        $todo->save();
+        session()->flash('success', 'Task completed successfully!');
+        return redirect(route('todos.all'));
+    }
 }
